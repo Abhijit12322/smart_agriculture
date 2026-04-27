@@ -2,6 +2,8 @@
 
 # 🌿 EcoMonitor Pro
 ## Intelligent Farm Management & AI Agronomist System
+### Developed by  
+**Abhijit Chakraborty · Kalpita Dey · Prajukta Deb**
 
 <br/>
 
