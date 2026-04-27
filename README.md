@@ -1,7 +1,7 @@
-# smart_agriculture
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=30&pause=1000&color=22C55E&center=true&vCenter=true&width=650&lines=🌿+EcoMonitor+Pro;Intelligent+Farm+Management+System;IoT+%2B+AI+Agronomist+%2B+Real-Time+Telemetry" alt="Typing SVG" />
+🌿 EcoMonitor Pro
+Intelligent Farm Management & AI Agronomist System
 
 <br/>
 
