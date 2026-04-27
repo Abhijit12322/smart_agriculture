@@ -196,12 +196,14 @@ The AI already knows. It's reading your farm in real time.
         ▼
    Intelligent Agronomic Response
 
+
 ```
 
 ---
 
 ## 📁 Project Structure
 
+```
 Project.../                         ← project root
 │
 ├── Arduino_Code/                  # Microcontroller code (Arduino / ESP32)
