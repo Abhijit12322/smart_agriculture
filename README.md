@@ -25,20 +25,6 @@
 
 ---
 
-## 👥 The Team
-
-<div align="center">
-
-| 👤 Name | 🎓 Roll No | 🏫 Department |
-|:--------|:-----------|:--------------|
-| Abhijit Chakraborty | ECE23-01 | Electronics & Communication Engineering |
-| Kalpita Dey | ECE23-20 | Electronics & Communication Engineering |
-| Prajukta Deb | ECE23-31 | Electronics & Communication Engineering |
-
-</div>
-
----
-
 ## 🧭 What Is EcoMonitor Pro?
 
 Most IoT dashboards are **passive** — they show numbers and leave the thinking to you.
@@ -172,27 +158,45 @@ The AI already knows. It's reading your farm in real time.
 
  ─────────────────── DATA FLOW ─────────────────────────────────────
 
-   Microcontroller
-        │ JSON via serial
+   Microcontroller (Arduino / ESP32)
+        │
+        │  JSON via Serial (9600 baud)
         ▼
-   Flask Serial Thread  ──(threading.Lock())──►  SQLite DB
-                                                     │
-                            ┌────────────────────────┘
-                            │
-              /data ◄───────┼────► /history ◄────► /export (.csv)
-                            │
-              Dashboard JS  →  setInterval polls /data + /history
-                                every 1.5 seconds (non-blocking)
-                            │
-                            └──► /api/chat receives:
-                                   user message
-                                 + live sensor snapshot (silent context)
-                                        │
-                                        ▼
-                                  Gemini 2.5 Flash
-                                        │
-                                        ▼
-                                  Expert agronomic reply
+   Flask Serial Thread
+        ├── Continuous data ingestion (pyserial)
+        ├── Thread-safe handling (threading.Lock)
+        └── Stores latest readings
+                │
+                ▼
+        SQLite Database
+        (soil · temp · humidity · rain · pump · timestamp)
+                │
+        ┌───────┼──────────────────────────────────────────────┐
+        │       │                                              │
+        ▼       ▼                                              ▼
+   /data      /history                                   /export
+ (latest)   (recent logs)                             (CSV download)
+
+        │
+        ▼
+   Dashboard (Frontend JS)
+        ├── Polls /data + /history every 1.5 seconds
+        ├── Updates UI (cards, charts, status)
+        └── Non-blocking real-time refresh
+
+        │
+        ▼
+   /api/chat  (AI Interaction Layer)
+        ├── Receives user query
+        ├── Fetches latest sensor snapshot
+        ├── Injects context silently
+        ▼
+   Gemini 2.5 Flash
+        │
+        ▼
+   Intelligent Agronomic Response
+
+╚══════════════════════════════════════════════════════════════════╝
 ```
 
 ---
@@ -202,19 +206,23 @@ The AI already knows. It's reading your farm in real time.
 ```
 Project.../                         ← project root
 │
-├── 📂 templates/
-│   ├── <> dashboard.html          # Core monitoring dashboard (glassmorphism UI)
-│   ├── <> docs.html               # In-app user manual & setup guide
-│   └── <> home.html               # Commercial landing page
+├── Arduino_Code/                  # Microcontroller code (Arduino / ESP32)
+│   └── sketch.ino                 # Sensor reading + JSON serial output
 │
-├── 🔐 .env                        # GEMINI_API_KEY  ← never commit this
-├── 📄 .env.example                # Safe template showing required keys
-├── 🐍 app.py                      # Flask backend — all routes, serial thread,
-│                                   # SQLite DB, threading.Lock(), Gemini AI
-├── {} data.json                   # Sensor data buffer / config
-├── models.txt                     # Model references / requirements notes
-├── Μ↓ README.md                   # This file
-└── sensor_data.db                 # SQLite database (auto-created on first run)
+├── templates/
+│   ├── dashboard.html            # Core monitoring dashboard (glassmorphism UI)
+│   ├── docs.html                 # In-app user manual & setup guide
+│   └── home.html                 # Commercial landing page
+│
+├── .env                          # GEMINI_API_KEY  ← never commit this
+├── .env.example                  # Safe template showing required keys
+├── app.py                        # Flask backend — routes, serial thread,
+│                                # SQLite DB, threading.Lock(), Gemini AI
+├── data.json                     # Sensor data buffer / config
+├── models.txt                    # Model references / requirements notes
+├── README.md                     # Project documentation
+└── sensor_data.db                # SQLite database (auto-created on first run)
+
 ```
 
 ---
