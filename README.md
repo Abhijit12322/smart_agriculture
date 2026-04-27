@@ -71,20 +71,20 @@ The AI already knows. It's reading your farm in real time.
 
 
  ┌──────────────────────────────────────────────────────────────────────┐
- │  🔌  HARDWARE LAYER  —  Arduino / ESP32                              │
+ │       🔌  HARDWARE LAYER  —  Arduino / ESP32                        │
  │                                                                      │
  │   Soil Moisture Sensor ──┐                                           │
- │   Rain Sensor ───────────┼──► Microcontroller ──► Serial (9600 baud)│
+ │   Rain Sensor ───────────┼──► Microcontroller ──► Serial (9600 baud) │
  │   DHT11 (Temp + Hum) ────┘                                           │
  │                                                                      │
  │   Output format: JSON payload per reading                            │
- │   { "soil": 800, "rain": 0, "temp": 31.5, "hum": 72.0,              │
+ │   { "soil": 800, "rain": 0, "temp": 31.5, "hum": 72.0,               │
  │     "pump": "ON" }                                                   │
  └────────────────────────────────┬─────────────────────────────────────┘
                                   │  USB Serial
                                   ▼
  ┌──────────────────────────────────────────────────────────────────────┐
- │  🧠  FLASK BACKEND  —  app.py  (Multi-threaded)                      │
+ │          🧠  FLASK BACKEND  —  app.py  (Multi-threaded)             │
  │                                                                      │
  │  ┌─────────────────────────────────────────────────────────────────┐ │
  │  │  SERIAL THREAD  (daemon, pyserial)                              │ │
@@ -109,51 +109,51 @@ The AI already knows. It's reading your farm in real time.
  │  └──────────────────────────────┬──────────────────────────────────┘ │
  │                                 │                                    │
  │  ╔══════════════ HTTP ROUTES ════════════════════════════════════╗   │
- │  ║  GET   /            →  home.html        Landing Page         ║   │
- │  ║  GET   /dashboard   →  dashboard.html   Core App UI          ║   │
- │  ║  GET   /docs        →  docs.html        User Manual          ║   │
- │  ║  GET   /ports       →  Available COM ports        (JSON)     ║   │
- │  ║  POST  /connect     →  Connect / Disconnect serial port      ║   │
- │  ║  GET   /data        →  Latest sensor reading      (JSON)     ║   │
- │  ║  GET   /history     →  Last 10 readings            (JSON)    ║   │
- │  ║  GET   /export      →  Full history CSV download             ║   │
- │  ║  POST  /api/chat    →  Gemini AI response          (JSON)    ║   │
+ │  ║  GET   /            →  home.html        Landing Page          ║   │
+ │  ║  GET   /dashboard   →  dashboard.html   Core App UI           ║   │
+ │  ║  GET   /docs        →  docs.html        User Manual           ║   │
+ │  ║  GET   /ports       →  Available COM ports        (JSON)      ║   │
+ │  ║  POST  /connect     →  Connect / Disconnect serial port       ║   │
+ │  ║  GET   /data        →  Latest sensor reading      (JSON)      ║   │
+ │  ║  GET   /history     →  Last 10 readings            (JSON)     ║   │
+ │  ║  GET   /export      →  Full history CSV download              ║   │
+ │  ║  POST  /api/chat    →  Gemini AI response          (JSON)     ║   │
  │  ╚═══════════════════════════════════════════════════════════════╝   │
- └──────────┬──────────────────────┬────────────────────┬──────────────┘
+ └──────────┬──────────────────────┬────────────────────┬───────────────┘
             │                      │                    │
             ▼                      ▼                    ▼
- ┌────────────────────┐  ┌──────────────────────┐  ┌─────────────────┐
- │    home.html       │  │   dashboard.html      │  │   docs.html     │
- │   LANDING PAGE     │  │     CORE APP UI       │  │  IN-APP DOCS    │
- │                    │  │                       │  │                 │
- │ • Deep gradient    │  │  SIDEBAR              │  │ • Arduino JSON  │
- │   mesh hero        │  │  ├── COM port select  │  │   format ref    │
- │ • Micro-animations │  │  ├── Connect toggle   │  │ • .env / API    │
- │ • Feature grid:    │  │  ├── Export CSV       │  │   key setup     │
- │   ─ Telemetry      │  │  └── Docs link        │  │ • AI chat guide │
- │   ─ AI Agronomist  │  │                       │  │ • CSV export    │
- │   ─ Analytics      │  │  MAIN PANEL           │  │   walkthrough   │
+ ┌────────────────────┐  ┌────────────────────────┐  ┌─────────────────┐
+ │    home.html       │  │   dashboard.html       │  │   docs.html     │
+ │   LANDING PAGE     │  │     CORE APP UI        │  │  IN-APP DOCS    │
+ │                    │  │                        │  │                 │
+ │ • Deep gradient    │  │  SIDEBAR               │  │ • Arduino JSON  │
+ │   mesh hero        │  │  ├── COM port select   │  │   format ref    │
+ │ • Micro-animations │  │  ├── Connect toggle    │  │ • .env / API    │
+ │ • Feature grid:    │  │  ├── Export CSV        │  │   key setup     │
+ │   ─ Telemetry      │  │  └── Docs link         │  │ • AI chat guide │
+ │   ─ AI Agronomist  │  │                        │  │ • CSV export    │
+ │   ─ Analytics      │  │  MAIN PANEL            │  │   walkthrough   │
  │ • Sticky navbar    │  │  ├── Glassmorphism     │  │                 │
  │ • High-converting  │  │  │   sensor cards      │  └─────────────────┘
- │   CTA button       │  │  │   Soil·Temp·Hum·   │
+ │   CTA button       │  │  │   Soil·Temp·Hum·    │
  └────────────────────┘  │  │   Rain·Pump         │
                          │  ├── Animated progress │
                          │  │   bars + optimal    │
-                         │  │   target ranges      │
-                         │  ├── Last Synced clock  │
-                         │  │   (HH:MM:SS)         │
-                         │  ├── Chart.js timeline  │
-                         │  │   (auto-updates,     │
-                         │  │   theme-synced)      │
-                         │  └── ☀️ / 🌙 toggle      │
+                         │  │   target ranges     │
+                         │  ├── Last Synced clock │
+                         │  │   (HH:MM:SS)        │
+                         │  ├── Chart.js timeline │
+                         │  │   (auto-updates,    │
+                         │  │   theme-synced)     │
+                         │  └── ☀️ / 🌙 toggle   │
                          │                        │
                          │  FLOATING AI WIDGET    │
-                         │  ├── Bottom-right       │
-                         │  ├── Gemini 2.5 Flash   │
-                         │  ├── Live sensor data   │
-                         │  │   injected silently  │
-                         │  ├── Session history    │
-                         │  └── Quick Action chips │
+                         │  ├── Bottom-right      │
+                         │  ├── Gemini 2.5 Flash  │
+                         │  ├── Live sensor data  │
+                         │  │   injected silently │
+                         │  ├── Session history   │
+                         │  └── Quick Action chips│
                          └────────────────────────┘
 
 

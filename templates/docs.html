@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | EcoMonitor Pro</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-body: #030712;
+            --bg-sidebar: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --primary: #10b981;
+            --secondary: #3b82f6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: var(--bg-sidebar);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+        }
+        .logo i { color: var(--primary); }
+
+        .nav-links a { 
+            color: var(--text-main); 
+            text-decoration: none; 
+            font-weight: 600; 
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .nav-links a:hover { 
+            background: rgba(16, 185, 129, 0.2); 
+        }
+
+        /* Content Area */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            flex: 1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+        }
+
+        /* Doc Sections */
+        .doc-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .doc-section h2 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 0;
+            color: var(--primary);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .doc-section p {
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        .code-block {
+            background: #0b1121;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            color: #a78bfa;
+            border: 1px solid var(--border-color);
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .feature-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+        .feature-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--primary);
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="logo">
+            <i class="fa-solid fa-leaf"></i> EcoMonitor Pro
+        </a>
+        <div class="nav-links">
+            <a href="/dashboard"><i class="fa-solid fa-chart-line"></i> Go to Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Documentation</h1>
+        <p class="subtitle">Complete guide to setting up and using your Intelligent Farm OS.</p>
+
+        <div class="doc-section">
+            <h2><i class="fa-solid fa-plug"></i> 1. Connecting Your Hardware</h2>
+            <p>EcoMonitor Pro relies on serial communication to ingest live sensor data. Ensure your Arduino or ESP32 is flashed with the correct sketch that outputs comma-separated JSON data over serial at 9600 baud.</p>
+            <div class="code-block">
+                // Expected Serial Output Format from Arduino:<br>
+                {"temperature": 24.5, "humidity": 60.2, "soil": 450, "rain": "No", "pump": "OFF"}
+            </div>
+            <ul class="feature-list">
+                <li>Plug your microcontroller into your computer via USB.</li>
+                <li>Navigate to the <b>Dashboard</b>.</li>
+                <li>In the left sidebar, click the refresh icon next to the COM port dropdown.</li>
+                <li>Select your designated COM port and click <b>Connect</b>.</li>
+            </ul>
+        </div>
+
+        <div class="doc-section">
+            <h2><i class="fa-solid fa-key"></i> 2. Configuring the Gemini AI API</h2>
+            <p>The "AI Agronomist" chat feature relies on Google's Gemini 2.5 Flash model. You must provide your own API key to activate this feature.</p>
+            <ul class="feature-list">
+                <li>Create a file named <code>.env</code> in the root directory of the application.</li>
+                <li>Open the file and add your API key exactly as shown below:</li>
+            </ul>
+            <div class="code-block">
+                GEMINI_API_KEY="AIzaSyYourSecretKeyHere..."
+            </div>
+            <p>If you hit rate limits (Free Tier restrictions), the AI chat will notify you. Wait a few minutes and try again.</p>
+        </div>
+
+        <div class="doc-section">
+            <h2><i class="fa-solid fa-wand-magic-sparkles"></i> 3. Using the AI Agronomist</h2>
+            <p>Once connected, the AI Agronomist constantly monitors your live data stream in the background.</p>
+            <ul class="feature-list">
+                <li>Click the floating spark button in the bottom right corner of the dashboard to open the chat window.</li>
+                <li>Every message you send automatically includes the current sensor state, so the AI always knows exactly what's happening on your farm right now.</li>
+                <li>Use the quick-action "Chips" above the chat input to instantly ask common questions like "Analyze trends" or "Why is the pump on?".</li>
+            </ul>
+        </div>
+
+        <div class="doc-section">
+            <h2><i class="fa-solid fa-file-csv"></i> 4. Exporting Data</h2>
+            <p>All telemetry data is saved locally to a SQLite database (<code>sensor_data.db</code>). You can easily export this data for external analysis.</p>
+            <ul class="feature-list">
+                <li>Go to the Dashboard.</li>
+                <li>Click the <b>Export Data CSV</b> button in the left sidebar under Data Management.</li>
+                <li>A complete CSV file containing every timestamped reading will automatically download to your computer.</li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+</html>
