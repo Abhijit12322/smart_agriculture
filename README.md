@@ -339,7 +339,7 @@ Everything a user needs to get set up, without leaving the app.
 
 </details>
 
-
+---
 
 ## 🛠️ Tech Stack
 
@@ -357,7 +357,7 @@ Everything a user needs to get set up, without leaving the app.
 
 </div>
 
-
+---
 
 ## 🔮 Roadmap
 
