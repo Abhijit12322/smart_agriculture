@@ -196,14 +196,12 @@ The AI already knows. It's reading your farm in real time.
         ▼
    Intelligent Agronomic Response
 
-╚══════════════════════════════════════════════════════════════════╝
 ```
 
 ---
 
 ## 📁 Project Structure
 
-```
 Project.../                         ← project root
 │
 ├── Arduino_Code/                  # Microcontroller code (Arduino / ESP32)
@@ -235,7 +233,6 @@ Project.../                         ← project root
 - Arduino or ESP32 printing JSON to Serial at **9600 baud**
 - A free [Gemini API key](https://aistudio.google.com)
 
----
 
 ### Step 1 — Clone
 ```bash
