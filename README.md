@@ -1,7 +1,7 @@
 <div align="center">
 
-🌿 EcoMonitor Pro
-Intelligent Farm Management & AI Agronomist System
+# 🌿 EcoMonitor Pro
+## Intelligent Farm Management & AI Agronomist System
 
 <br/>
 
