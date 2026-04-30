@@ -238,8 +238,8 @@ Project.../                         ← project root
 
 ### Step 1 — Clone
 ```bash
-git clone https://github.com/your-username/ecomonitor-pro.git
-cd ecomonitor-pro
+git clone https://github.com/Abhijit12322/smart_agriculture.git
+cd smart_agriculture-main
 ```
 
 ### Step 2 — Install dependencies
@@ -275,7 +275,7 @@ http://127.0.0.1:5000
 ## ✨ Features
 
 <details>
-<summary><b>🏠 &nbsp; Commercial Landing Page &nbsp;<code>/</code></b></summary>
+<summary><b> &nbsp; Commercial Landing Page &nbsp;<code>/</code></b></summary>
 <br/>
 
 A polished, high-converting hero page designed to introduce the product with confidence.
@@ -288,7 +288,7 @@ A polished, high-converting hero page designed to introduce the product with con
 </details>
 
 <details>
-<summary><b>📊 &nbsp; Real-Time Telemetry Dashboard &nbsp;<code>/dashboard</code></b></summary>
+<summary><b> &nbsp; Real-Time Telemetry Dashboard &nbsp;<code>/dashboard</code></b></summary>
 <br/>
 
 The core of EcoMonitor Pro — everything you need at a glance.
@@ -303,7 +303,7 @@ The core of EcoMonitor Pro — everything you need at a glance.
 </details>
 
 <details>
-<summary><b>🤖 &nbsp; Floating AI Agronomist</b></summary>
+<summary><b> &nbsp; Floating AI Agronomist</b></summary>
 <br/>
 
 Not just a chatbot — a farming expert that's already watching your sensors.
@@ -320,7 +320,7 @@ Not just a chatbot — a farming expert that's already watching your sensors.
 </details>
 
 <details>
-<summary><b>📚 &nbsp; In-App Documentation &nbsp;<code>/docs</code></b></summary>
+<summary><b> &nbsp; In-App Documentation &nbsp;<code>/docs</code></b></summary>
 <br/>
 
 Everything a user needs to get set up, without leaving the app.
@@ -333,7 +333,7 @@ Everything a user needs to get set up, without leaving the app.
 </details>
 
 <details>
-<summary><b>📤 &nbsp; CSV Data Export &nbsp;<code>/export</code></b></summary>
+<summary><b> &nbsp; CSV Data Export &nbsp;<code>/export</code></b></summary>
 <br/>
 
 - One-click download of the **complete sensor history** (last 100 readings) as `.csv`
@@ -355,7 +355,7 @@ Everything a user needs to get set up, without leaving the app.
 | **AI Engine** | ![Gemini](https://img.shields.io/badge/Gemini_2.5_Flash-4285F4?style=flat-square&logo=google&logoColor=white) |
 | **Frontend** | ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3_%2B_Variables-1572B6?style=flat-square&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/Vanilla_JS-F7DF1E?style=flat-square&logo=javascript&logoColor=black) |
 | **Charts** | ![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=flat-square&logo=chartdotjs&logoColor=white) |
-| **Config** | ![dotenv](https://img.shields.io/badge/.env_%2F_python--dotenv-ECD53F?style=flat-square) |
+
 
 </div>
 
